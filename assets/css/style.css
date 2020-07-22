@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f0f5;    
+}
+
+a {
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #212121;
+    text-align: center;    
+}
+
+
+
+header {        
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.progress {
+    margin-top: 30px;
+}
+
+.search-field {    
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-field button {
+    margin-left: 10px;    
+}
+
+.search {
+    border: 1px solid grey;
+    border-radius: 8px;
+    padding: 10px;
+    min-height: 100px;   
+    
+}
+
+.search-count {        
+    font-size: 40px;    
+    margin-bottom: 20px;
+    margin-top: 0;
+}
+
+.results {
+    display: flex;
+    flex-direction: column;          
+}
+
+.card {
+    display: flex;    
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;    
+}
+
+.card img {
+    border: 1px solid #ddd;
+}
+
+.card label{
+    flex: 1;
+    font-size: 28px;
+    text-align: center;
+}
+
+.tab-statistic {
+    border: 1px solid grey;    
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100px;
+
+}
+
+.tab-statistic h2 {
+    font-size: 40px;
+    margin: 10px;
+
+}
+
+.tab-statistic p {
+    font-size: 20px
+}
+
+.tab-st {
+    margin: 20px;
+}
+
+
+
