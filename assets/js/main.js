@@ -32,7 +32,7 @@ function start() {
     setTimeout(() => {
         fetchPeoples();
         activeInput();
-    }, 2000);
+    }, 1000);
 
 }
 
@@ -57,10 +57,11 @@ function activeInput() {
     inputName.disabled = false;
     inputName.focus();
 
-    inputName.addEventListener('keyup', (e) => {
+    inputName.addEventListener('keyup', ({ key }) => {
         checkInput = inputName.value.length > 0;
         btnSearch.disabled = !checkInput;
-        if (e.key === 'Enter') filterName(inputName.value);
+
+        if (key === 'Enter') filterName(inputName.value);
     });
 
     btnSearch.addEventListener('click', () => filterName(inputName.value));
