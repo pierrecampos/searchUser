@@ -15,7 +15,9 @@ let checkInput = false;
 let numberFormat = null
 let loading = null;
 
-window.addEventListener('load', () => {
+
+function start() {
+
     inputName = document.querySelector('#search-peoples');
     btnSearch = document.querySelector('.btn-search');
     totalFilteredPeoples = document.querySelector('.search-count');
@@ -26,22 +28,20 @@ window.addEventListener('load', () => {
 
     numberFormat = Intl.NumberFormat('pt-BR');
 
-
     // "Loading"
     setTimeout(() => {
         fetchPeoples();
         activeInput();
     }, 2000);
 
-});
+}
 
 async function fetchPeoples() {
 
     const peoples = await fetch('https://randomuser.me/api/?seed=javascript&results=100&nat=BR&noinfo');
     const peoplesJson = await peoples.json();
 
-    allPeoples = peoplesJson.results.map(person => {
-        const { name, picture, dob, gender } = person;
+    allPeoples = peoplesJson.results.map(({ name, picture, dob, gender }) => {
         return {
             name: name.first + ' ' + name.last,
             picture: picture.large,
@@ -74,7 +74,7 @@ function filterName(name) {
         return;
     }
 
-    filteredPeoples = allPeoples.filter(people => people.name.toLowerCase().indexOf(name.toLowerCase()) >= 0);
+    filteredPeoples = allPeoples.filter(people => people.name.toLowerCase().includes(name.toLowerCase()));
     filteredPeoples.sort((a, b) => a.name.localeCompare(b.name));
 
     renderFilteredPeoples();
@@ -85,9 +85,7 @@ function renderFilteredPeoples() {
     let peoplesHTML = '<ul>';
 
 
-    filteredPeoples.forEach(people => {
-        const { name, picture, age } = people;
-
+    filteredPeoples.forEach(({ name, picture, age }) => {
         const peopleHTML = `
         <li>
             <div class="card z-depth-1">
@@ -141,3 +139,5 @@ function renderStatistic() {
 function formatNumber(number) {
     return numberFormat.format(number);
 }
+
+start();
